@@ -1,0 +1,152 @@
+### Create Widget for Soials 
+Put this code on your functions.php or create new page and put this
+###
+<?php
+/**
+ * Adds arwgt_initialize widget.
+ */
+class arwgt_initialize extends WP_Widget {
+	function __construct() {
+		parent::__construct( 'arwgt_initialize', esc_html__( 'Ar Socials Media', 'arwgt' ), array( 'description' => esc_html__( 'AR Socials Widget', 'arwgt' ), ) );
+	}
+
+
+	public function widget( $args, $instance ) {
+		echo $args['before_widget'];
+		?>
+		<div id="arsocials">
+				<ul>
+		<?php if ( ! empty( $instance['fb_url'] ) ) {
+			echo '<li><a class="icon fb-icon" href="' . $instance["fb_url"] . '" target="_blank"></a></li>' ;
+		}
+		if ( ! empty( $instance['tt_url'] ) ) {
+			echo '<li><a class="icon tt-icon" href="' . $instance['tt_url'] . '" target="_blank"></a></li>' ;
+		}
+		if ( ! empty( $instance['gp_url'] ) ) {
+			echo '<li><a class="icon gp-icon" href="' . $instance['gp_url'] . '" target="_blank"></a></li>' ;
+		}
+		if ( ! empty( $instance['ig_url'] ) ) {
+			echo '<li><a class="icon ig-icon" href="' . $instance['ig_url'] . '" target="_blank"></a></li>' ;
+		}
+		if ( ! empty( $instance['li_url'] ) ) {
+			echo '<li><a class="icon li-icon" href="' . $instance['li_url'] . '" target="_blank"></a></li>' ;
+		}
+		if ( ! empty( $instance['yt_url'] ) ) {
+			echo '<li><a class="icon yt-icon" href="' . $instance['yt_url'] . '" target="_blank"></a></li>' ;
+		}
+		if ( ! empty( $instance['pnt_url'] ) ) {
+			echo '<li><a class="icon pt-icon" href="' . $instance['pnt_url'] . '" target="_blank"></a></li>' ;
+		}
+		if ( ! empty( $instance['vmo_url'] ) ) {
+			echo '<li><a class="icon vm-icon" href="' . $instance['vmo_url'] . '" target="_blank"></a></li>' ;
+		}
+		if ( ! empty( $instance['db_url'] ) ) {
+			echo '<li><a class="icon db-icon" href="' . $instance['db_url'] . '" target="_blank"></a></li>' ;
+		}
+
+		echo '</ul></div>';
+		echo $args['after_widget'];
+	}
+
+
+	public function form( $instance ) {		
+		$fb_url = ! empty( $instance['fb_url'] ) ? $instance['fb_url'] : esc_html__( '#', 'arwgt' ); ?>
+		<p>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'fb_url' ) ); ?>"><?php esc_attr_e( 'Facebook Url:', 'arwgt' ); ?></label> 
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'fb_url' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'fb_url' ) ); ?>" type="text" value="<?php echo esc_attr( $fb_url ); ?>">
+		</p>
+
+		<?php $tt_url = ! empty( $instance['tt_url'] ) ? $instance['tt_url'] : esc_html__( '#', 'arwgt' ); ?>
+		<p>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'tt_url' ) ); ?>"><?php esc_attr_e( 'Twitter Url:', 'arwgt' ); ?></label> 
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'tt_url' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'tt_url' ) ); ?>" type="text" value="<?php echo esc_attr( $tt_url ); ?>">
+		</p>
+
+		<?php $gp_url = ! empty( $instance['gp_url'] ) ? $instance['gp_url'] : esc_html__( '#', 'arwgt' ); ?>
+		<p>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'gp_url' ) ); ?>"><?php esc_attr_e( 'Google Plus Url:', 'arwgt' ); ?></label> 
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'gp_url' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'gp_url' ) ); ?>" type="text" value="<?php echo esc_attr( $gp_url ); ?>">
+		</p>
+
+		<?php $ig_url = ! empty( $instance['ig_url'] ) ? $instance['ig_url'] : esc_html__( '#', 'arwgt' ); ?>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'ig_url' ) ); ?>"><?php esc_attr_e( 'Instagram Url:', 'arwgt' ); ?></label> 
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'ig_url' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'ig_url' ) ); ?>" type="text" value="<?php echo esc_attr( $ig_url ); ?>">
+		</p>
+
+		<?php $li_url = ! empty( $instance['li_url'] ) ? $instance['li_url'] : esc_html__( '#', 'arwgt' ); ?>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'li_url' ) ); ?>"><?php esc_attr_e( 'LinkedIn Url:', 'arwgt' ); ?></label> 
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'li_url' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'li_url' ) ); ?>" type="text" value="<?php echo esc_attr( $li_url ); ?>">
+		</p>
+
+		<?php $yt_url = ! empty( $instance['yt_url'] ) ? $instance['yt_url'] : esc_html__( '#', 'arwgt' ); ?>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'yt_url' ) ); ?>"><?php esc_attr_e( 'Youtube Url:', 'arwgt' ); ?></label> 
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'yt_url' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'yt_url' ) ); ?>" type="text" value="<?php echo esc_attr( $yt_url ); ?>">
+		</p>
+
+		<?php $pnt_url = ! empty( $instance['pnt_url'] ) ? $instance['pnt_url'] : esc_html__( '#', 'arwgt' ); ?>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'pnt_url' ) ); ?>"><?php esc_attr_e( 'Pinterst Url:', 'arwgt' ); ?></label> 
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'pnt_url' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'pnt_url' ) ); ?>" type="text" value="<?php echo esc_attr( $pnt_url ); ?>">
+		</p>
+
+		<?php $vmo_url = ! empty( $instance['vmo_url'] ) ? $instance['vmo_url'] : esc_html__( '#', 'arwgt' ); ?>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'vmo_url' ) ); ?>"><?php esc_attr_e( 'Vimeo Url:', 'arwgt' ); ?></label> 
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'vmo_url' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'vmo_url' ) ); ?>" type="text" value="<?php echo esc_attr( $vmo_url ); ?>">
+		</p>
+
+		<?php $db_url = ! empty( $instance['db_url'] ) ? $instance['db_url'] : esc_html__( '#', 'arwgt' ); ?>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'db_url' ) ); ?>"><?php esc_attr_e( 'Dribble Url:', 'arwgt' ); ?></label> 
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'db_url' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'db_url' ) ); ?>" type="text" value="<?php echo esc_attr( $db_url ); ?>">
+		</p>
+
+		<?php 
+	}
+
+
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+
+		$instance['fb_url'] = ( ! empty( $new_instance['fb_url'] ) ) ? sanitize_text_field( $new_instance['fb_url'] ) : '';
+		$instance['tt_url'] = ( ! empty( $new_instance['tt_url'] ) ) ? sanitize_text_field( $new_instance['tt_url'] ) : '';
+		$instance['gp_url'] = ( ! empty( $new_instance['gp_url'] ) ) ? sanitize_text_field( $new_instance['gp_url'] ) : '';
+		$instance['ig_url'] = ( ! empty( $new_instance['ig_url'] ) ) ? sanitize_text_field( $new_instance['ig_url'] ) : '';
+		$instance['li_url'] = ( ! empty( $new_instance['li_url'] ) ) ? sanitize_text_field( $new_instance['li_url'] ) : '';
+		$instance['yt_url'] = ( ! empty( $new_instance['yt_url'] ) ) ? sanitize_text_field( $new_instance['yt_url'] ) : '';
+		$instance['pnt_url'] = ( ! empty( $new_instance['pnt_url'] ) ) ? sanitize_text_field( $new_instance['pnt_url'] ) : '';
+		$instance['vmo_url'] = ( ! empty( $new_instance['vmo_url'] ) ) ? sanitize_text_field( $new_instance['vmo_url'] ) : '';
+		$instance['db_url'] = ( ! empty( $new_instance['db_url'] ) ) ? sanitize_text_field( $new_instance['db_url'] ) : '';
+
+		return $instance;
+	}
+
+}
+
+function register_arwgt_initialize() {
+    register_widget( 'arwgt_initialize' );
+}
+add_action( 'widgets_init', 'register_arwgt_initialize' );
+#### !Create Widget for Soials  ###
+
+
+### Style Socials Icons 
+Put this code on your stylesheet
+###
+/*AR Socials*/
+#arsocials{margin: 0 10px;}
+#arsocials ul{padding-left: 0;list-style-type: none;}
+#arsocials ul li{display: inline-block;margin-bottom: 10px;margin-right: 10px;}
+#arsocials ul li a.icon{display: block;background-repeat: no-repeat;background-position: center center;background-size: 30px auto;width: 30px;height: 30px;line-height: 30px;}
+#arsocials ul li a.fb-icon{background-image: url(http://localhost/wordpress/wp-content/uploads/2018/12/fb-icon.jpg);}
+#arsocials ul li a.tt-icon{background-image: url(http://localhost/wordpress/wp-content/uploads/2018/12/tt-icon.jpg);}
+#arsocials ul li a.ig-icon{background-image: url(http://localhost/wordpress/wp-content/uploads/2018/12/ig-icon.jpg);}
+#arsocials ul li a.li-icon{background-image: url(http://localhost/wordpress/wp-content/uploads/2018/12/li-icon.jpg);}
+#arsocials ul li a.gp-icon{background-image: url(http://localhost/wordpress/wp-content/uploads/2018/12/gp-icon.jpg);}
+#arsocials ul li a.pt-icon{background-image: url(http://localhost/wordpress/wp-content/uploads/2018/12/pt-icon.jpg);}
+#arsocials ul li a.vm-icon{background-image: url(http://localhost/wordpress/wp-content/uploads/2018/12/vm-icon.jpg);}
+#arsocials ul li a.db-icon{background-image: url(http://localhost/wordpress/wp-content/uploads/2018/12/db-icon.jpg);}
+#arsocials ul li a.yt-icon{background-image: url(http://localhost/wordpress/wp-content/uploads/2018/12/yt-icon.jpg);}
+
+### !Style Socials Icons ###
+
+### Now go on admin widget area and drag&drop this widget in which widget you need
+than you will see the output
+###
