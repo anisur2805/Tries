@@ -140,9 +140,13 @@ function book_save_meta_box( $post_id ) {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return $post_id;
 	}
+	
+	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+		return $post_id;
+	}
 
 	// Check the user's permissions.
-	if ( 'post' == $_POST['book'] ) {
+	if ( 'post' == $_POST['post_type'] ) {
 		if ( ! current_user_can( 'edit_page', $post_id ) ) {
 			return $post_id;
 		}
