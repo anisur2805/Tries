@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Document</title>
+
+	<style>
+		.modal {
+			display: none;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+
+		.modal-block {
+			background: #fff;
+			box-shadow: 0 24px 49px rgba(24, 27, 49, 0.9);
+			padding: 20px;
+			width: 500px;
+			height: 300px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="ytw">
+		<!-- <iframe width="500" height="500" src="https://www.youtube.com/embed/xi_OiJf4zYY?list=PL_XxuZqN0xVAvcGzTEAyPSOqgUQA08rNB" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+	</div>
+
+	<div class="modal">
+		<div class="modal-block">
+			<h1>Modal Title</h1>
+			<p>Modal Content goes here.</p>
+			<a href="">btn</a>
+		</div>
+	</div>
+
+	<div id="newvid"></div>
+
+	<script src="https://www.youtube.com/iframe_api"></script>
+
+	<script>
+
+
+		var player; 
+		function onYouTubeIframeAPIReady() {
+			player = new YT.Player('newvid', {
+				height: '300',
+				width: '400',
+				videoId: 'F8rLwoLtCpM',
+				events: {
+					'onStateChange': function (event) {
+						if (event.data == YT.PlayerState.PLAYING) {
+							myFunction();
+						}
+					}
+				}
+			});
+		}
+
+
+		function myFunction() {
+			setTimeout(function() {
+				document.getElementsByClassName('modal').style.display = "flex"
+			}, 5000
+			)
+		}
+
+
+			// var secondsCount;
+			// function mySecondCount(){
+			// 	secondsCount = setTimeout(
+			// 		popupForm, 5000
+			// 	)
+			// }
+
+			// mySecondCount()
+
+			// function popupForm(){
+			// 	alert('You have passed 5s here');
+			// } 
+	</script>
+</body>
+
+</html>
