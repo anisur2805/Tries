@@ -45,7 +45,9 @@
 	<script>
 
 
-		var player; 
+		var player;
+		var dflex = document.getElementsByClassName('modal').style = 'display : block';
+
 		function onYouTubeIframeAPIReady() {
 			player = new YT.Player('newvid', {
 				height: '300',
@@ -63,10 +65,13 @@
 
 
 		function myFunction() {
-			setTimeout(function() {
-				document.getElementsByClassName('modal').style.display = "flex"
-			}, 5000
-			)
+			setTimeout(() => { dflex }, 5000);
+
+
+			// setTimeout(function() {
+			// 	flex
+			// }, 5000
+			// )
 		}
 
 
