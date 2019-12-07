@@ -2,92 +2,112 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Document</title>
 
-	<style>
-		.modal {
-			display: none;
-			align-items: center;
-			justify-content: center;
-			height: 100vh;
-		}
+    <style>
+        body {
+            transition: all .4s;
+        }
 
-		.modal-block {
-			background: #fff;
-			box-shadow: 0 24px 49px rgba(24, 27, 49, 0.9);
-			padding: 20px;
-			width: 500px;
-			height: 300px;
-		}
-	</style>
+        body.blur {
+            background: rgba(0, 0, 0, .45);
+        }
+
+        .modal {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: absolute;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+        }
+
+        .modal-block {
+            background: #fff;
+            box-shadow: 0 24px 49px rgba(24, 27, 49, 0.9);
+            padding: 20px;
+            width: 500px;
+            height: 300px;
+        }
+    </style>
 </head>
 
 <body>
 
-	<div class="ytw">
-		<!-- <iframe width="500" height="500" src="https://www.youtube.com/embed/xi_OiJf4zYY?list=PL_XxuZqN0xVAvcGzTEAyPSOqgUQA08rNB" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-	</div>
+<div class="ytw">
+    <!-- <iframe width="500" height="500" src="https://www.youtube.com/embed/xi_OiJf4zYY?list=PL_XxuZqN0xVAvcGzTEAyPSOqgUQA08rNB" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+</div>
 
-	<div class="modal">
-		<div class="modal-block">
-			<h1>Modal Title</h1>
-			<p>Modal Content goes here.</p>
-			<a href="">btn</a>
-		</div>
-	</div>
+<div class="modal" id="modal">
+    <div class="modal-block">
+        <h1>Modal Title</h1>
+        <p>Modal Content goes here.</p>
+        <a href="">btn</a>
+    </div>
+</div>
 
-	<div id="newvid"></div>
+<div id="newvid"></div>
 
-	<script src="https://www.youtube.com/iframe_api"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
 
-	<script>
+<script>
+    // document.addEventListener('DOM')
+    var player;
+    // var dflex = document.getElementsByClassName('modal').style = 'display : block';
+    // var cl = console.log('Hello there')
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('newvid', {
+            height: '300',
+            width: '400',
+            videoId: 'F8rLwoLtCpM',
+            events: {
+                'onStateChange': function (event) {
+                    if (event.data == YT.PlayerState.PLAYING) {
+                        myFunction();
+                    }
+                }
+            }
+        });
+    }
 
+    function myFunction() {
+        // var dflex = document.getElementById('modal').style.display = 'flex';
+        // setTimeout(() => { cl }, 5000);
 
-		var player;
-		var dflex = document.getElementsByClassName('modal').style = 'display : block';
-
-		function onYouTubeIframeAPIReady() {
-			player = new YT.Player('newvid', {
-				height: '300',
-				width: '400',
-				videoId: 'F8rLwoLtCpM',
-				events: {
-					'onStateChange': function (event) {
-						if (event.data == YT.PlayerState.PLAYING) {
-							myFunction();
-						}
-					}
-				}
-			});
-		}
-
-
-		function myFunction() {
-			setTimeout(() => { dflex }, 5000);
-
-
-			// setTimeout(function() {
-			// 	flex
-			// }, 5000
-			// )
-		}
+        // setTimeout(function() {
+        // 	flex
+        // }, 5000
+        // )
 
 
-			// var secondsCount;
-			// function mySecondCount(){
-			// 	secondsCount = setTimeout(
-			// 		popupForm, 5000
-			// 	)
-			// }
+        setTimeout(function () {
+            document.getElementById('modal').style.display = 'flex';
+            player.pauseVideo()
+            var body = document.querySelector('body')
+            body.classList.add('blur')
+            window.addEventListener('click', function () {
+                body.classList.remove('blur')
+                document.getElementById('modal').style.display = 'none';
+            })
+        }, 5000)
 
-			// mySecondCount()
+    }
 
-			// function popupForm(){
-			// 	alert('You have passed 5s here');
-			// } 
-	</script>
+    // var secondsCount;
+    // function mySecondCount(){
+    // 	secondsCount = setTimeout(
+    // 		popupForm, 5000
+    // 	)
+    // }
+    // mySecondCount()
+    // function popupForm(){
+    // 	alert('You have passed 5s here');
+    // }
+</script>
 </body>
 
 </html>
