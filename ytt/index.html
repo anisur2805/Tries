@@ -15,6 +15,12 @@
             background: rgba(0, 0, 0, .45);
         }
 
+        .ytw {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
         .modal {
             display: none;
             align-items: center;
@@ -24,6 +30,8 @@
             left: 0;
             right: 0;
             z-index: 9999;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .modal-block {
@@ -39,6 +47,7 @@
 <body>
 
 <div class="ytw">
+    <div id="newvid"></div>
     <!-- <iframe width="500" height="500" src="https://www.youtube.com/embed/xi_OiJf4zYY?list=PL_XxuZqN0xVAvcGzTEAyPSOqgUQA08rNB" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 </div>
 
@@ -50,7 +59,6 @@
     </div>
 </div>
 
-<div id="newvid"></div>
 
 <script src="https://www.youtube.com/iframe_api"></script>
 
