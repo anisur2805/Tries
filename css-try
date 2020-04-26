@@ -1,0 +1,13 @@
+.exampleDiv {
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+  
+  
+use this style for overflow hidde long text  
+  
+  
+  
+  
